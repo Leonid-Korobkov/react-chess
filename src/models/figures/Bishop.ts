@@ -1,8 +1,8 @@
 import { Cell } from '../Cell'
 import { Colors } from '../Colors'
 import { Figure } from './Figure'
-import blackLogo from '../../assets/black-bishop.png'
-import whiteLogo from '../../assets/white-bishop.png'
+import blackLogo from '../../assets/black-bishop.svg'
+import whiteLogo from '../../assets/white-bishop.svg'
 import { FiguresNames } from './FiguresNames'
 
 // Фигура - слон
@@ -17,6 +17,9 @@ export class Bishop extends Figure {
     if (!super.canMove(target)) {
       return false
     }
-    return true
+    if (this.cell.isEmptyDiagonal(target)) {
+      return true
+    }
+    return false
   }
 }

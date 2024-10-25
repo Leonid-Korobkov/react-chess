@@ -5,9 +5,10 @@ interface CellProps {
   cell: Cell
   selected: boolean
   click: (cell: Cell) => void
+  isEnemy: boolean
 }
 
-function CellC({ cell, selected, click }: CellProps) {
+function CellC({ cell, selected, click, isEnemy }: CellProps) {
   return (
     <div
       onClick={() => click(cell)}
@@ -15,7 +16,15 @@ function CellC({ cell, selected, click }: CellProps) {
         ${cell.color === Colors.WHITE ? 'board__cell--white' : 'board__cell--black'}
         ${selected ? 'selected' : ''}`}
       style={{
-        cursor: cell.figure ? 'pointer' : 'default',
+        cursor: cell.figure
+          ? isEnemy
+            ? cell.aviable
+              ? 'crosshair'
+              : 'not-allowed'
+            : 'pointer'
+          : cell.aviable
+            ? 'move'
+            : 'default',
         backgroundColor: cell.aviable && cell.figure ? '#2fff2f' : '',
       }}
     >

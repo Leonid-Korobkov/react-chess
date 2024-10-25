@@ -1,9 +1,16 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 :root {
-  --margin-board: 20px;
+  --margin-board: 0px;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .app {
@@ -12,22 +19,93 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: stretch;
+  align-items: stretch;
 }
-
-.board {
+.board-wrapper {
+  min-width: 100%;
+  min-height: 100%;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  display: flex;
+
+  .info-panel {
+    flex-basis: auto;
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lost-figure {
+    /* height: calc(50vh - 60px); */
+    width: 100%;
+    padding: 5px;
+    background-color: #1883a7;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    /* align-items: center; */
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    > div {
+      /* align-self: start; */
+      gap: 10px;
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+      img {
+        max-width: 20px;
+      }
+    }
+  }
+  .lost-figure--white {
+    background-color: #ebcdb6;
+    color: black;
+  }
+
+  @media screen and (orientation: portrait) {
+    & {
+      flex-direction: column;
+    }
+    .lost-figure {
+      font-size: 14px;
+    }
+  }
+}
+.board {
+  /* width: 100%; */
+  flex-basis: auto;
+  height: 100%;
+  justify-content: right;
   max-height: 100vh;
   margin: var(--margin-board);
   box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(
     8,
-    calc((min(100vw, 100vh) - var(--margin-board) * 2) / 8)
+    calc(
+      (min(min(100%, 100vh), min(100%, 100vw)) - var(--margin-board) * 2) / 8
+    )
   );
+
+  @media screen and (orientation: portrait) {
+    & {
+      flex-basis: auto;
+      height: 100%;
+      justify-content: right;
+      max-height: 100vh;
+      margin: var(--margin-board);
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+    }
+  }
 
   &__cell {
     width: 100%;
@@ -44,28 +122,22 @@
     }
 
     &--black {
-      background-color: deepskyblue;
+      /* background-color: #7898a3; */
+      background-color: #1883a7;
     }
 
     &--white {
-      background-color: #eed4ac;
+      background-color: #ebcdb6;
     }
   }
 }
 
 .selected {
-  background-color: brown;
+  background-color: #ff4a4a;
 }
 .aviable {
-  height: 12px;
-  width: 12px;
+  height: 15%;
+  width: 15%;
   border-radius: 50%;
   background-color: #2fff2f;
-}
-
-.lost {
-  height: calc(50vh - 60px);
-  padding: 30px;
-  margin-left: 50px;
-  background-color: lightgray;
 }

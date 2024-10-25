@@ -1,8 +1,8 @@
 import { Cell } from '../Cell'
 import { Colors } from '../Colors'
 import { Figure } from './Figure'
-import blackLogo from '../../assets/black-knight.png'
-import whiteLogo from '../../assets/white-knight.png'
+import blackLogo from '../../assets/black-knight.svg'
+import whiteLogo from '../../assets/white-knight.svg'
 import { FiguresNames } from './FiguresNames'
 
 // Фигура - конь
@@ -17,6 +17,18 @@ export class Knight extends Figure {
     if (!super.canMove(target)) {
       return false
     }
-    return true
+    if (this.isEmptyForKnight(target)) {
+      return true
+    }
+    return false
+  }
+
+  isEmptyForKnight(target: Cell): boolean {
+    const absX = Math.abs(target.x - this.cell.x)
+    const absY = Math.abs(target.y - this.cell.y)
+    if ((absX === 1 && absY === 2) || (absX === 2 && absY === 1)) {
+      return true
+    }
+    return false
   }
 }

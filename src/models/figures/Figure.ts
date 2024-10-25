@@ -1,5 +1,5 @@
 import { Colors } from '../Colors'
-import logo from '../../assets/black-knight.png'
+import logo from '../../assets/black-knight.svg'
 import { Cell } from '../Cell'
 import { FiguresNames } from './FiguresNames'
 

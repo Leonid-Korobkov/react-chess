@@ -1,8 +1,8 @@
 import { Cell } from '../Cell'
 import { Colors } from '../Colors'
 import { Figure } from './Figure'
-import blackLogo from '../../assets/black-rook.png'
-import whiteLogo from '../../assets/white-rook.png'
+import blackLogo from '../../assets/black-rook.svg'
+import whiteLogo from '../../assets/white-rook.svg'
 import { FiguresNames } from './FiguresNames'
 
 // Фигура - ладья
@@ -17,6 +17,12 @@ export class Rook extends Figure {
     if (!super.canMove(target)) {
       return false
     }
-    return true
+    if (
+      this.cell.isEmptyVertical(target) ||
+      this.cell.isEmptyHorizontal(target)
+    ) {
+      return true
+    }
+    return false
   }
 }
