@@ -1,8 +1,1 @@
-{
-  "root": [
-    "./src/app.tsx",
-    "./src/main.tsx",
-    "./src/vite-env.d.ts"
-  ],
-  "version": "5.6.2"
-}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/boardc.tsx","./src/components/cellc.tsx","./src/components/lostfigures.tsx","./src/components/timer.tsx","./src/models/board.ts","./src/models/cell.ts","./src/models/colors.ts","./src/models/player.ts","./src/models/figures/bishop.ts","./src/models/figures/figure.ts","./src/models/figures/figuresnames.ts","./src/models/figures/king.ts","./src/models/figures/knight.ts","./src/models/figures/pawn.ts","./src/models/figures/queen.ts","./src/models/figures/rook.ts"],"version":"5.6.2"}
