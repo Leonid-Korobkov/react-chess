@@ -5,6 +5,7 @@ import { Board } from './models/Board'
 import { Player } from './models/Player'
 import { Colors } from './models/Colors'
 import LostFigures from './components/LostFigures'
+import Timer from './components/Timer'
 
 function App() {
   const [board, setBoard] = useState(new Board())
@@ -36,10 +37,11 @@ function App() {
       <div className='app'>
         <div className='board-wrapper'>
           <div className='info-panel'>
-            <h3>
+            <h2>
               Ходит игрок:{' '}
               {currentPlayer?.color === Colors.WHITE ? 'Белый' : 'Черный'}
-            </h3>
+            </h2>
+            <Timer currentPlayer={currentPlayer} restartGame={restart} />
             <LostFigures
               title='Игрок за белыми фигурами'
               figures={board.lostBlackFigures}

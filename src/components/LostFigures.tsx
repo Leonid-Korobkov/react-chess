@@ -9,7 +9,7 @@ interface LostFiguresProps {
 function LostFigures({ title, figures, className }: LostFiguresProps) {
   return (
     <div className={`lost-figure ${className}`}>
-      <h3>{title}</h3>
+      <div>{title}</div>
       {figures.map((figure) => {
         return (
           <div key={figure.id}>
